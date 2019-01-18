@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(49, 49, 49);
+}
+
+
+/* Top and left by 50% puts the top left of the container box in the center of the screen, not the content itself. To have the center of the content in the center of the screen we move the container box up and over by (minus) 50% each. The container holds all of the elements making it easier to align the others inside */
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Draw the frame of the mouse */
+
+.mouseFrame {
+    border-radius: 50px 50px 50px 50px;
+    border: 5px solid white;
+    width: 90px;
+    height: 200px;
+}
+
+
+/* Draw the wheel of the mouse */
+
+.mouseWheel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    width: 20px;
+    height: 50px;
+    border-radius: 25px 25px 25px 25px;
+    transform: translate(-50%, -150%);
+}
+
+
+/* Draw the indicator which is animated. -125% is to move the ensure the content box is moved upwards enough on the x axis */
+
+.movingElement {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    width: 10px;
+    height: 10px;
+    border-radius: 80%;
+    transform: translate(-50%, -125%);
+    animation-name: continuousScrolling;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+
+/* Opacity of 1 at 50% gives a nice fade in/out effect */
+
+@keyframes continuousScrolling {
+    0% {
+        transform: translate(-50%, -125%);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, 500%);
+    }
+}
